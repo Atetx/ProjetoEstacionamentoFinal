@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EstacionamentoWeb.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20201209002626_CreateDatabase")]
-    partial class CreateDatabase
+    [Migration("20201209161724_CreateDatabe")]
+    partial class CreateDatabe
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

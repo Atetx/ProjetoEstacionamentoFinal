@@ -2,7 +2,7 @@
 
 namespace EstacionamentoWeb.Migrations
 {
-    public partial class Inferno : Migration
+    public partial class Infernow : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

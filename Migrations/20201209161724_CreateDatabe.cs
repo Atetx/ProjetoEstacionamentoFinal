@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EstacionamentoWeb.Migrations
 {
-    public partial class CreateDatabase : Migration
+    public partial class CreateDatabe : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

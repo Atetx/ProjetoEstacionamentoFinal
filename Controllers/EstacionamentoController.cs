@@ -47,17 +47,21 @@ namespace EstacionamentoWeb.Controllers
         [HttpPost]
         public IActionResult Cadastrar(Estacionamento estacionamento)
         {
-            if (ModelState.IsValid)
+            var email = User.Identity.Name;
+            if (email != null)
             {
-                var email = User.Identity.Name;
-                UsuarioCNPJ usuario = _usuarioCNPJDAO.BuscarPorEmail(email);
-                if (_estacionamentoDAO.Cadastrar(estacionamento, usuario))
+                if (ModelState.IsValid)
                 {
-                    return RedirectToAction("Index", "Estacionamento");
+                    UsuarioCNPJ usuario = _usuarioCNPJDAO.BuscarPorEmail(email);
+                    if (_estacionamentoDAO.Cadastrar(estacionamento, usuario))
+                    {
+                        return RedirectToAction("Index", "Estacionamento");
+                    }
+                    ModelState.AddModelError("", "Estacionamento já cadastrado");
                 }
-                ModelState.AddModelError("", "Estacionamento já cadastrado");
+                return View(estacionamento);
             }
-            return View(estacionamento);
+            return RedirectToAction("Login", "Usuario");
         }
         public IActionResult Alterar(int id)
         {

@@ -26,8 +26,13 @@ namespace EstacionamentoWeb.Controllers
         }
         public IActionResult Index()
         {
-            ViewBag.Title = "Gerenciamento de Veículos";
-            return View(_veiculoDAO.Listar());
+            var email = User.Identity.Name;
+            if (email != null)
+            {
+                ViewBag.Title = "Gerenciamento de Veículos";
+                return View(_veiculoDAO.Listar());
+            }
+            return RedirectToAction("Login", "Usuario");
         }
         public IActionResult Cadastrar()
         {
@@ -76,7 +81,7 @@ namespace EstacionamentoWeb.Controllers
             if (email != null)
             {
                 _veiculoDAO.Remover(id);
-            return RedirectToAction("Index", "Veiculos");
+                return RedirectToAction("Index", "Veiculos");
             }
             return RedirectToAction("Login", "Usuario");
         }

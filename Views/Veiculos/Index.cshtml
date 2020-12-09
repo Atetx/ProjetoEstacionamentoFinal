@@ -1,13 +1,14 @@
 ﻿@model IEnumerable<EstacionamentoWeb.Models.Veiculo>
 
-@{
-    ViewData["Title"] = "Index";
-}
+@{ ViewData["Title"] = "Cadastrar veiculo"; }
 
 <h1>Meus Veículos</h1>
 
 <p>
-    <a asp-action="Cadastrar" asp-controller="Veiculo">Cadastre seu veiculos</a>
+    <a asp-action="Cadastrar" asp-controller="Veiculos" class="botao btn btn-primary">Cadastre seu veiculos</a>
+</p>
+<p>
+    <a asp-action="Cadastrar" asp-controller="Estacionar" class="botao btn btn-primary">Estacionar o veiculo</a>
 </p>
 <table class="table">
     <thead>
@@ -27,21 +28,19 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Modelo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Marca)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Placa)
-                </td>
-                <td>
-                    <a asp-action="Alterar" asp-route-id="@item.Id">Alterar</a> |
-                    <a asp-action="Remover" asp-route-id="@item.Id">Remover</a>
-                </td>
-            </tr>
-        }
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Modelo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Marca)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Placa)
+    </td>
+    <td>
+        <a asp-action="Remover" asp-route-id="@item.Id">Remover</a>
+    </td>
+</tr>}
     </tbody>
 </table>

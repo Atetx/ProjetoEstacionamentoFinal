@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EstacionamentoWeb.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20201209132641_Inferno")]
-    partial class Inferno
+    [Migration("20201209215537_Funciona")]
+    partial class Funciona
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

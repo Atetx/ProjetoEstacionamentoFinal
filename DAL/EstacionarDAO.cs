@@ -19,5 +19,10 @@ namespace EstacionamentoWeb.DAL
             _context.SaveChanges();
             return true;
         }
+        public void Remover(Estacionar estacionar)
+        {
+            _context.Estacionados.Remove(estacionar);
+            _context.SaveChanges();
+        }
     }
 }

@@ -44,12 +44,16 @@ body {
         text-decoration: none;
         color: #0B3954;
         font-size: 30px;
-        padding: 20px;
+        padding: 50px;
+    }
+
+    .menu a login{
+        text-align: right;
     }
 
 .autenticacao {
     text-align: center;
-    height: 200px;
+    height: 400px;
     padding: 45px;
 }
 

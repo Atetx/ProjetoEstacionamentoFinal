@@ -48,11 +48,19 @@ namespace EstacionamentoWeb.Controllers
             {
                 var name = User.Identity.Name;
                 Usuario usuario = _usuarioDAO.BuscarPorEmail(name);
-                int usuarioId = usuario.Id;
                 UsuarioCNPJ usuarioCNPJ = _usuarioCNPJDAO.BuscarPorEmail(email);
-                int usuarioCnpjId = usuarioCNPJ.Id;
-                ViewBag.Veiculos = new SelectList(_veiculoDAO.ListarPorUsuario(usuarioId), "Id", "Modelo");
-                ViewBag.Estacionamentos = new SelectList(_estacionamentoDAO.ListarPorUsuario(usuarioCnpjId), "Id", "Nome");
+                if (usuario != null)
+                {
+                    int usuarioId = usuario.Id;
+                    ViewBag.Veiculos = new SelectList(_veiculoDAO.ListarPorUsuario(usuarioId), "Id", "Modelo");
+                    ViewBag.Estacionamentos = new SelectList(_estacionamentoDAO.Listar(), "Id", "Nome");
+                }
+                else if (usuarioCNPJ != null)
+                {
+                    int usuarioCnpjId = usuarioCNPJ.Id;
+                    ViewBag.Veiculos = new SelectList(_veiculoDAO.Listar());
+                    ViewBag.Estacionamentos = new SelectList(_estacionamentoDAO.ListarPorUsuario(usuarioCnpjId), "Id", "Nome");
+                }
                 return View();
             }
             return RedirectToAction("Login", "Usuario");
@@ -60,11 +68,21 @@ namespace EstacionamentoWeb.Controllers
         [HttpPost]
         public IActionResult Cadastrar(Estacionar estacionar)
         {
+
             var email = User.Identity.Name;
             Usuario usuario = _usuarioDAO.BuscarPorEmail(email);
+            UsuarioCNPJ usuarioCNPJ = _usuarioCNPJDAO.BuscarPorEmail(email);
             estacionar.Veiculo = _veiculoDAO.BuscarPorId(estacionar.QualquerCoisa);
             estacionar.Estacionamento = _estacionamentoDAO.BuscarPorId(estacionar.EstacionamentoId);
-            estacionar.Usuario = usuario;
+            if (usuario != null)
+            {
+                estacionar.Usuario = usuario;
+            }
+            else if (usuarioCNPJ != null)
+            {
+                estacionar.UsuarioCNPJ = usuarioCNPJ;
+            }
+
             if (_estacionarDAO.Cadastrar(estacionar))
             {
                 return RedirectToAction("Index", "Estacionar");
@@ -86,17 +104,31 @@ namespace EstacionamentoWeb.Controllers
                 double valor = estacionamento.Preco;
                 if (tempo <= 1)
                 {
-                    ViewBag.Preco = valor; return View();
+                    ViewBag.Preco = valor;
+                    return View(estacionado);
                 }
                 else if (tempo > 1 && tempo <= 5)
                 {
-                    ViewBag.Preco = valor * 2; return View();
+                    ViewBag.Preco = valor * 2;
+                    return View(estacionado);
                 }
                 else if (tempo > 5)
                 {
                     ViewBag.Preco = valor * 4;
                 }
-                ViewBag.PrecoPadrao = valor; return View();
+                ViewBag.Preco = valor;
+                return View(estacionado);
+            }
+            return RedirectToAction("Login", "Usuario");
+        }
+        [HttpPost]
+        public IActionResult Retirar(Estacionar estacionar)
+        {
+            var email = User.Identity.Name;
+            if (email != null)
+            {
+                _estacionarDAO.Remover(estacionar);
+                return RedirectToAction("Index", "Veiculos");
             }
             return RedirectToAction("Login", "Usuario");
         }

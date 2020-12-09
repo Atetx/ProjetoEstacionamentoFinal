@@ -25,6 +25,7 @@
     <div class="form-group">
         <label asp-for="Situacao" class="control-label">Situação:</label>
         <input asp-for="Situacao" readonly id="situacao" class="form-control" />
+        <span class="text-danger" asp-validation-for="Situacao"></span>
     </div>
     <div class="form-group">
         <label asp-for="Email">Email:</label>
