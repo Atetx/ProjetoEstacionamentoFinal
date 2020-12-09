@@ -1,0 +1,76 @@
+﻿@model Estacionamento
+@{ ViewData["Title"] = "Cadastro Estacionamento"; }
+<form class="formulario" asp-action="Cadastrar">
+
+    <h1>Cadastro do Estacionamento</h1>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Cep" class="control-label"></label>
+            <input asp-for="Cep" id="cep" class="form-control" />
+        </div>
+
+        <button type="button" onclick="BuscarCep()" class="btn btn-primary">Buscar Endereço</button>
+
+        <div class="form-group">
+            <label asp-for="Logradouro" class="control-label"></label>
+            <input asp-for="Logradouro" readonly id="logradouro" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Localidade" class="control-label"></label>
+            <input asp-for="Localidade" readonly id="localidade" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Bairro" class="control-label"></label>
+            <input asp-for="Bairro" readonly id="bairro" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Uf" class="control-label"></label>
+            <input asp-for="Uf" readonly id="uf" class="form-control" />
+        </div>
+    <fieldset>
+        <div class="form-group">
+            <label asp-for="Nome" class="control-label"></label>
+            <input asp-for="Nome" class="form-control" />
+            <span asp-validation-for="Nome" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Vagas" class="control-label"></label>
+            <input asp-for="Vagas" class="form-control" />
+            <span asp-validation-for="Vagas" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Preco" class="control-label"></label>
+            <input asp-for="Preco" class="form-control" />
+            <span asp-validation-for="Preco" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Cadastrar" class="botao btn-success" />
+        </div>
+    </fieldset>
+</form>
+
+
+
+<script>
+    var txtCep = document.getElementById("cep");
+    var txtLogradouro = document.getElementById("logradouro");
+    var txtLocalidade = document.getElementById("localidade");
+    var txtBairro = document.getElementById("bairro");
+    var txtUF = document.getElementById("uf");
+
+    function BuscarCep() {
+        var url = `https://viacep.com.br/ws/${txtCep.value}/json/`;
+
+        fetch(url, { method: "GET" })
+            .then(response => response.json())
+            .then(json => {
+                txtLogradouro.value = json.logradouro;
+                txtLocalidade.value = json.localidade;
+                txtBairro.value = json.bairro;
+                txtUf.value = json.uf;
+            })
+            .catch(error => console.log(error));
+    }
+
+</script>
+

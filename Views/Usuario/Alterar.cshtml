@@ -1,0 +1,24 @@
+﻿@model Usuario
+
+<form asp-action="Alterar" asp-controller="Usuario" method="post">
+    <fieldset>
+        <legend>Alterar Usuario</legend>
+
+        <label asp-for="Id">Id:</label>
+        <input asp-for="Id" readonly name="Id" type="text" placeholder="Id do Usuario" /><br />
+
+        <label asp-for="Nome">Nome:</label>
+        <input asp-for="Nome" type="text" placeholder="Nome do Usuario" /><br />
+
+        <label asp-for="Cpf">CPF:</label>
+        <input asp-for="Cpf" type="text" placeholder="CPF do Usuario" /><br />
+
+        <label asp-for="Email">Email:</label>
+        <input asp-for="Email" type="text" placeholder="Email do Usuario" /><br />
+        <label asp-for="Senha">Senha:</label>
+        <input asp-for="Senha" type="password" placeholder="Senha" /><br />
+        <label asp-for="ConfirmacaoSenha">Confirmação de Senha</label>
+        <input asp-for="ConfirmacaoSenha" type="password" placeholder="Confirmação de Senha" /><br />
+        <input type="submit" value="Salvar" />
+    </fieldset>
+</form>

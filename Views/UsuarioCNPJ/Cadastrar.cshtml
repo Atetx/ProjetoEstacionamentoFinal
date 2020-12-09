@@ -1,0 +1,65 @@
+﻿@model UsuarioCNPJ
+@{ ViewData["Title"] = "Cadastro de usuario CNPJ"; }
+<form class="formulario" asp-action="Cadastrar" asp-controller="UsuarioCNPJ" method="post">
+    <h1>Cadastro do Usuario CNPJ:</h1>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Cnpj" class="control-label"></label>
+        <input asp-for="Cnpj" id="cnpj" class="form-control" />
+    </div>
+
+    <button type="button" onclick="BuscarCNPJ()" class="botao btn-primary">Buscar Estabelecimento</button>
+
+    <div class="form-group">
+        <label asp-for="Tipo" class="control-label">Tipo:</label>
+        <input asp-for="Tipo" readonly id="tipo" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Fantasia" class="control-label">Nome fantasia:</label>
+        <input asp-for="Fantasia" readonly id="fantasia" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Capital_social" class="control-label">Capital Social:</label>
+        <input asp-for="Capital_social" readonly id="capital_social" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Situacao" class="control-label">Situação:</label>
+        <input asp-for="Situacao" readonly id="situacao" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Email">Email:</label>
+        <input class="form-control" asp-for="Email" type="text" placeholder="Email do Usuario" />
+        <span class="text-danger" asp-validation-for="Email"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Senha">Senha:</label>
+        <input class="form-control" asp-for="Senha" type="password" placeholder="Senha" />
+        <span class="text-danger" asp-validation-for="Senha"></span>
+    </div>
+    <input class="botao btn-success" type="submit" value="Cadastrar" />
+</form>
+<script>
+    var txtCnpj = document.getElementById("cnpj");
+    var txtTipo = document.getElementById("tipo");
+    var txtFantasia = document.getElementById("fantasia");
+    var txtCapital_social = document.getElementById("capital_social");
+    var txtSituacao = document.getElementById("situacao");
+
+    function BuscarCNPJ() {
+        var protectedUrl = `https://cors-anywhere.herokuapp.com/www.receitaws.com.br/v1/cnpj/${txtCnpj.value}`;
+
+        fetch(protectedUrl, {
+            headers: {
+                Authentication: "0394377664ac11a17fb5a2f247bfda7e78bbc762fa45f900c2b39cd783a070f8"
+            }
+        })
+            .then(response => response.json())
+            .then(json => {
+                txtTipo.value = json.tipo;
+                txtFantasia.value = json.fantasia;
+                txtCapital_social.value = json.capital_social;
+                txtSituacao.value = json.situacao;
+            })
+            .catch(error => console.log(error));
+    }
+</script>

@@ -1,0 +1,23 @@
+﻿@model IEnumerable<EstacionamentoWeb.Models.Pagamento>
+@{ ViewData["Title"] = "Index"; }
+
+<h1>Pagamento</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PagamentoId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.PagamentoId)
+    </td>
+</tr>}
+    </tbody>
+</table>

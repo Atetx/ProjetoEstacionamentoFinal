@@ -1,0 +1,155 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: #FEFFFE;
+}
+
+.cabecalho {
+    background-color: #BFD7EA;
+    border-bottom: solid 5px #FF6663;
+    height: 120px;
+    box-sizing: content-box;
+}
+
+.logo {
+    display: inline-block;
+    height: 120px;
+    padding: 25px;
+}
+
+    .logo img {
+        height: 100%;
+    }
+
+.menu {
+    display: inline-block;
+    vertical-align: top;
+    height: 120px;
+    padding: 45px;
+}
+
+    .menu ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    .menu li {
+        display: inline-block;
+    }
+
+    .menu a {
+        text-decoration: none;
+        color: #0B3954;
+        font-size: 30px;
+        padding: 20px;
+    }
+
+.autenticacao {
+    text-align: center;
+    height: 200px;
+    padding: 45px;
+}
+
+    .autenticacao a {
+        text-decoration: none;
+        color: #0B3954;
+    }
+
+
+.botao {
+    width: 100%;
+    border-radius: 30px;
+    margin-bottom: 10px;
+}
+
+
+.salvar {
+    margin-top: 20px;
+    margin-bottom: 50px;
+    margin-left: 10px;
+    width: 350px;
+}
+
+
+.conteudo {
+    padding: 80px 180px 80px 180px;
+    font-size: 20px;
+    line-height: 40px;
+    text-align: justify;
+}
+
+
+.carro {
+    display: inline-block;
+}
+
+    .carro h2 {
+        text-align: right;
+        margin-right: 300px;
+    }
+
+    .carro p {
+        margin-top: 50px;
+    }
+
+    .carro img {
+        width: 500px;
+        height: 300px;
+        float: left;
+        margin-right: 30px;
+    }
+
+.estacionamento {
+    display: inline-block;
+    margin-top: 80px;
+}
+
+    .estacionamento p {
+        margin-top: 50px;
+    }
+
+
+
+    .estacionamento img {
+        width: 500px;
+        height: 300px;
+        float: right;
+        margin-left: 30px;
+    }
+
+.formulario {
+    width: 500px;
+    margin: 50px 0px 0 400px;
+}
+
+
+input {
+    width: 100%;
+    margin: 10px;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+label {
+    width: 35%;
+    display: inline-block;
+}
+
+
+.rodape {
+    background-color: #BFD7EA;
+    border-top: solid 5px #FF6663;
+    height: 120px;
+    box-sizing: content-box;
+}
+
+    .rodape p {
+        display: inline-block;
+        margin-left: 350px;
+        color: #0B3954;
+        font-size: 20px;
+        padding: 25px;
+    }

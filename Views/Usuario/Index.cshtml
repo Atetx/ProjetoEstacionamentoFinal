@@ -1,0 +1,39 @@
+﻿@model List<Usuario>
+
+<h3 class="espacamento-baixo">Gerenciamento de Usuarios</h3>
+
+<a asp-action="Cadastrar" asp-controller="Veiculo" class="botao btn-primary espacamento-baixo">Cadastre um Veiculo</a>
+
+<table class="table table-hover table-striped espacamento-baixo">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Email</th>
+            <th>Veiculo</th>
+            <th>Imagem</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Usuario usuariosCadastrado in Model)
+        {
+<tr>
+    <td>@usuariosCadastrado.Id</td>
+    <td>@usuariosCadastrado.Nome</td>
+    <td>@usuariosCadastrado.Cpf</td>
+    <td>@usuariosCadastrado.Email</td>
+    <td>
+        <a asp-action="Remover" asp-controller="Usuario" asp-route-id="@usuariosCadastrado.Id" class="btn btn-danger">Remover</a>
+    </td>
+    <td>
+        <a asp-action="Alterar" asp-controller="Usuario" asp-route-id="@usuariosCadastrado.Id" class="btn btn-warning">Alterar</a>
+    </td>
+</tr>}
+    </tbody>
+</table>
+
+<p><b>Dados atualizados: </b> @DateTime.Now </p>
+

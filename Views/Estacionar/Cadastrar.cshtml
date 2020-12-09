@@ -1,0 +1,10 @@
+﻿@model EstacionamentoWeb.Models.Estacionar
+
+@{
+    ViewData["Title"] = "Estacionar";
+}
+<form class="formulario" asp-action="Cadastrar" asp-controller="Estacionar" method="post">
+    @Html.DropDownListFor(m => m.QualquerCoisa, ViewBag.Veiculos as SelectList, new { @class = "form-control" })
+    @Html.DropDownListFor(m => m.EstacionamentoId, ViewBag.Estacionamentos as SelectList, new { @class = "form-control" })
+    <input class="botao btn-success" type="submit" value="Cadastrar" />
+</form>
