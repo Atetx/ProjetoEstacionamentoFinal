@@ -16,7 +16,7 @@ body {
 
 .logo {
     display: inline-block;
-    height: 120px;
+    height: 220px;
     padding: 25px;
 }
 
@@ -27,7 +27,7 @@ body {
 .menu {
     display: inline-block;
     vertical-align: top;
-    height: 120px;
+    height: 150px;
     padding: 45px;
 }
 
@@ -43,7 +43,7 @@ body {
     .menu a {
         text-decoration: none;
         color: #0B3954;
-        font-size: 30px;
+        font-size: 40px;
         padding: 50px;
     }
 
