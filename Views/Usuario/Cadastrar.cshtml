@@ -2,7 +2,7 @@
 @{ ViewData["Title"] = "Cadastro Usuario"; }
 <form class="formulario" asp-action="Cadastrar" asp-controller="Usuario" method="post">
     <h1>Cadastrar Usuario:</h1>
-    
+
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
     <div class="form-group">
@@ -21,6 +21,11 @@
         <label asp-for="Email">Email:</label>
         <input class="form-control" asp-for="Email" type="text" placeholder="Email do Usuario" />
         <span class="text-danger" asp-validation-for="Email"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DataNascimento">Data de Nascimento:</label>
+        <input class="form-control" asp-for="DataNascimento" type="datetime" placeholder="Data de Nascimento" />
+        <span class="text-danger" asp-validation-for="DataNascimento"></span>
     </div>
     <div class="form-group">
         <label asp-for="Senha">Senha:</label>

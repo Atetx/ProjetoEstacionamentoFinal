@@ -32,5 +32,6 @@ namespace EstacionamentoWeb.Models
         public List<Veiculo> Veiculos { get; set; }
 
         public List<Estacionar> Estacionados { get; set; }
+        public DateTime DataNascimento { get; set; }
     }
 }

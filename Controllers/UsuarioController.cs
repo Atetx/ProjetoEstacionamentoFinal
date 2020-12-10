@@ -50,7 +50,7 @@ namespace EstacionamentoWeb.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Cadastrar([Bind("Nome,Cpf,Email,Senha,Id,CriadoEm,ConfirmacaoSenha")] Usuario usuario)
+        public async Task<IActionResult> Cadastrar([Bind("Nome,Cpf,Email,Senha,Id,CriadoEm,ConfirmacaoSenha,DataNascimento")] Usuario usuario)
         {
             if (ModelState.IsValid)
             {

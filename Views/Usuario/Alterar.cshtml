@@ -15,6 +15,11 @@
 
         <label asp-for="Email">Email:</label>
         <input asp-for="Email" type="text" placeholder="Email do Usuario" /><br />
+        <div class="form-group">
+            <label asp-for="DataNascimento">Data de Nascimento:</label>
+            <input class="form-control" asp-for="DataNascimento" type="datetime" placeholder="Data de Nascimento" />
+            <span class="text-danger" asp-validation-for="DataNascimento"></span>
+        </div>
         <label asp-for="Senha">Senha:</label>
         <input asp-for="Senha" type="password" placeholder="Senha" /><br />
         <label asp-for="ConfirmacaoSenha">Confirmação de Senha</label>

@@ -2,8 +2,6 @@
 
 <h3 class="espacamento-baixo">Gerenciamento de Usuarios</h3>
 
-<a asp-action="Cadastrar" asp-controller="Veiculo" class="botao btn-primary espacamento-baixo">Cadastre um Veiculo</a>
-
 <table class="table table-hover table-striped espacamento-baixo">
     <thead>
         <tr>
@@ -11,8 +9,7 @@
             <th>Nome</th>
             <th>CPF</th>
             <th>Email</th>
-            <th>Veiculo</th>
-            <th>Imagem</th>
+            <th>Data de Nascimento</th>
             <th></th>
             <th></th>
         </tr>
@@ -25,8 +22,10 @@
     <td>@usuariosCadastrado.Nome</td>
     <td>@usuariosCadastrado.Cpf</td>
     <td>@usuariosCadastrado.Email</td>
+    <td>@usuariosCadastrado.DataNascimento</td>
     <td>
         <a asp-action="Alterar" asp-controller="Usuario" asp-route-id="@usuariosCadastrado.Id" class="btn btn-warning">Alterar</a>
+        <a asp-action="Remover" asp-controller="Usuario" asp-route-id="@usuariosCadastrado.Id" class="btn btn-danger">Remover</a>
     </td>
 </tr>
 }

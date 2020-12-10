@@ -1,7 +1,6 @@
 ﻿@model IEnumerable<EstacionamentoWeb.Models.Estacionar>
 
 @{ ViewData["Title"] = "Retirar"; }
-
 <h1>Estacionar</h1>
 
 <p>
@@ -11,10 +10,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Veiculo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Veiculo.Placa)
+                @Html.DisplayNameFor(model => model.CriadoEm)
             </th>
             <th></th>
         </tr>
@@ -24,7 +20,7 @@
         {
 <tr>
     <td>
-        @Html.DisplayFor(modelItem => item.Veiculo)
+        @Html.DisplayFor(modelItem => item.CriadoEm)
         <a asp-action="Retirar" asp-route-id="@item.Id" class="botao btn btn-danger">Retirar</a>
     </td>
 </tr>
